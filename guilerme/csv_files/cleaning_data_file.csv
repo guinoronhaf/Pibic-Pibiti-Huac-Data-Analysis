@@ -1,0 +1,21 @@
+ID,Nome,Idade,Data de Registro,Salario,Ativo,ID Departamento
+1,,35,2024-01-02,5469.47,True,3
+2,Nicolas Cardoso,45,2022-05-25,3824.2,True,4
+3,Lucas Gabriel Sampaio,60,2023-01-05,5599.99,True,4
+4,Luiz Fernando Fernandes,,2023-10-09,6708.07,False,
+5,Gael Henrique Costela,51,2021-11-07,9497.52,,
+6,Stephany Pimenta,32,2024-07-21,7123.0,True,
+7,Bruna Vargas,25,2022-03-29,5036.81,,
+8,,60,2024-03-03,8219.79,True,5
+9,,47,2022-09-12,4790.53,,4
+10,,,2022-06-26,8914.27,,4
+11,,,2023-02-04,4475.88,,
+12,Manuela Guerra,,2022-03-31,9883.09,False,
+13,Dr. Apollo Moraes,,2023-01-16,5392.79,True,
+14,Antônio Gonçalves,44,,5511.17,True,
+15,Luara Lima,48,,5426.62,True,3
+16,,26,,6519.7,False,
+17,,41,2024-07-11,7815.03,False,5
+18,Isabela Campos,28,2022-06-21,7824.41,False,4
+19,Danilo Rocha,32,2024-08-07,7196.97,False,4
+20,Sara Fonseca,50,2023-09-05,5884.55,True,2
