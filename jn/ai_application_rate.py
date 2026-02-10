@@ -17,7 +17,7 @@ def map_times_by_rate(df_to_map):
 def plot_graph(df):
     df_to_plot = get_data_frame_app_rate(df)
 
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(12, 8))
 
     dict_times_by_rate = map_times_by_rate(df_to_plot)
 
@@ -33,12 +33,27 @@ def plot_graph(df):
     ax.set_xticklabels(rates)
     ax.set_ylabel('Times Chosen')
     ax.set_xlabel('Rates')
-    ax.set_title('Rate: AI trust by radiologies')
+    ax.set_ylim(0, max(times_chosen) + 5)
+    ax.set_title('How do you rate the application of artificial intelligence in radiological diagnosis?', fontweight='bold')
     ax.legend(title="Color Mean")
 
+    
+    total_votes = sum(times_chosen)
+    # O 'r' antes das aspas é fundamental para o LaTeX funcionar -> gemini salvou
+    labels = [fr"$\mathbf{{{times}}}$ ({((times / total_votes) * 100):.2f}%)" for times in times_chosen]
+
+    rects = ax.patches
+    for rect, label in zip(rects, labels):
+        height = rect.get_height()
+        ax.text(
+            rect.get_x() + rect.get_width() / 2, 
+            height + 0.05, 
+            label, 
+            ha="center", 
+            va="bottom"
+        )
+
     plt.savefig("graphs/ai_trust_rated_by_radiologies.png")
-
-
 
 def get_data_frame_app_rate(df):
     df_rate_group = df["ia_confiavel"].value_counts().reset_index() # tranforma em um DataFrame (Series -> DataFrame)
