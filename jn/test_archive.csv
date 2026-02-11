@@ -1,0 +1,11 @@
+id_pedido,data,produto,categoria,quantidade,preco_unitario,regiao,pagamento
+1001,2025-01-10,iPhone 15,Smartphones,1,999.99,Sul,Cartao
+1002,2025-01-12,MacBook Air,Laptops,1,1200.00,Sudeste,Pix
+1003,2025-01-12,Fone Bluetooth,Acessorios,2,50.00,Sudeste,Cartao
+1004,2025-01-15,Monitor 4K,Monitores,,350.00,Nordeste,Boleto
+1005,2025-01-18,Mouse Gamer,Acessorios,3,25.00,Sul,Pix
+1006,2025-01-20,iPhone 15,Smartphones,1,999.99,Norte,Cartao
+1007,2025-01-21,Teclado Mecanico,Acessorios,1,80.00,Sudeste,Pix
+1008,2025-01-22,MacBook Air,Laptops,1,1200.00,Centro-Oeste,Cartao
+1009,2025-01-25,Monitor 4K,Monitores,1,350.00,Sul,Boleto
+1010,2025-01-26,Fone Bluetooth,Acessorios,5,45.00,Nordeste,Pix
