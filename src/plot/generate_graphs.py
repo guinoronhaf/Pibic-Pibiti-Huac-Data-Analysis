@@ -120,6 +120,48 @@ def generate_graph_4(df: pd.DataFrame):
 
     plt.clf()
 
+def generate_graph_5(df: pd.DataFrame):
+    target_field = 'funcionalidades'
+    title = "Quais funcionaliades serviriam para aumentar sua confiança em um sistema de IA para diagnóstico por imagem?"
+
+    ans_poss = ("A performance/acurácia do sistema", "Uma explicação visual", "Uma indicação da confiança", "Uma explicação textual", "Uma recomendação para mais imagens/modalidades")
+    ans_poss_labels = ("A performance/acurácia\ndo sistema", "Uma explicação visual", "Uma indicação da\n confiança", "Uma explicação textual", "Uma recomendação para \nmais imagens/modalidades")
+
+    ans_values = [int(df[target_field].str.contains(ap).sum()) for ap in ans_poss]
+
+    fig, ax = plt.subplots(figsize=(18, 8))
+
+    ax.barh(ans_poss_labels, ans_values, height=0.5)
+
+    ax.set_xticks(range(0, max(ans_values) + 5, 10))
+    ax.set_yticks(range(len(ans_poss_labels)))
+
+    ax.xaxis.set_tick_params(pad=5)
+    ax.yaxis.set_tick_params(pad=10)
+
+    ax.xaxis.set_ticks_position('none')
+    ax.yaxis.set_ticks_position('none')
+
+    ax.set_yticklabels(ans_poss_labels, ma='center')
+
+    for s in ('left', 'right'):
+        ax.spines[s].set_visible(False)
+
+    ax.invert_yaxis()
+
+    ax.set_xlabel('Counts')
+
+    ax.grid(visible=True, color='grey', linestyle='-.', linewidth=0.5, alpha=0.2)
+
+    for i in ax.patches:
+        plt.text(i.get_width()+0.1, i.get_y()+0.3, str(round((i.get_width()), 2)), fontsize=10, color='black', ma='center')
+
+    ax.set_title(title, pad=10)
+
+    plt.savefig(PATH + "graph5.png")
+
+    plt.clf()
+
 def generate_graph_6(df: pd.DataFrame):
     df_to_plot = get_data_frame_app_rate(df)
 

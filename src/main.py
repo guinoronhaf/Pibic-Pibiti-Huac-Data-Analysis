@@ -16,6 +16,8 @@ if __name__ == "__main__":
         print("graph3 is OK")
         g.generate_graph_4(df)
         print("graph4 is OK")
+        g.generate_graph_5(df)
+        print("graph5 is OK")
         g.generate_graph_6(df)
         print("graph6 is OK")
     except:
