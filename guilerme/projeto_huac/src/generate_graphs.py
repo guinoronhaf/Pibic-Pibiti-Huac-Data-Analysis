@@ -75,10 +75,10 @@ def generate_graph2(df: pd.DataFrame):
 def generate_graph3(df: pd.DataFrame):
     DF_TARGET_FIELD = "funcionalidades"
 
-    title = "Quais funcionalidade serviriam para aumentar sua confiança em um sistema de IA para diagnóstico por imagem?"
+    title = "Quais funcionalidades serviriam para aumentar sua confiança em um sistema de IA para diagnóstico por imagem?"
 
     ans_possibilities = ("A performance/acurácia do sistema", "Uma explicação visual", "Uma indicação da confiança", "Uma explicação textual", "Uma recomendação para mais imagens/modalidades")
-    ans_possibilities_labels = ("A performance/acurácia\ndo sistema", "Uma explicação visual", "Uma indicação da\n confiança", "Uma explicação textual", "Uma recomendação para \nmais imagens/modalidades")
+    ans_possibilities_labels = ("A performance/acurácia\ndo sistema", "Uma explicação visual", "Uma indicação da\n confiança do sistema\nem seus diagnósticos", "Uma explicação textual", "Uma recomendação para \nmais imagens/modalidades")
 
     ans_values = [int(df[DF_TARGET_FIELD].str.contains(ap).sum()) for ap in ans_possibilities]
 
@@ -86,7 +86,7 @@ def generate_graph3(df: pd.DataFrame):
 
     ax.barh(ans_possibilities_labels, ans_values, height=0.5)
 
-    ax.set_xticks(range(0, max(ans_values) + 5, 10))
+    ax.set_xticks(range(0, max(ans_values) + 5, 5))
     ax.set_yticks(range(len(ans_possibilities_labels)))
 
     ax.xaxis.set_ticks_position('none')
