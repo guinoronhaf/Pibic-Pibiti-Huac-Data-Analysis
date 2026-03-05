@@ -2,7 +2,9 @@ import pandas as pd
 
 def map_times_by_rate(df_to_map):
     times_dict = {}
-    for i in range(0, 11):
+    rates = ["1 - Muito Negativa", "2 - Negativa", 
+             "3 - Neutra", "4 - Positiva", "5 - Muito Positiva"]
+    for i in rates:
         times_dict[i] = df_to_map.loc[df_to_map['rate'] == i, 'times_chosen'].values
 
         if list(times_dict[i]) == []:
@@ -13,7 +15,7 @@ def map_times_by_rate(df_to_map):
     return times_dict
 
 def get_data_frame_app_rate(df):
-    df_rate_group = df["ia_confiavel"].value_counts().reset_index() # tranforma em um DataFrame (Series -> DataFrame)
+    df_rate_group = df["av_aplicacao_ia"].value_counts().reset_index() # tranforma em um DataFrame (Series -> DataFrame)
 
     df_rate_group.columns = ["rate", "times_chosen"]
 
@@ -70,3 +72,4 @@ def group_percentage_years_specialist(df_orig):
     df_order_columns.columns.name = None # remove a referencia à coluna original que referencia a coluna do DataFrame ao fazer o crosstab ("Questão2")
 
     return df_order_columns
+

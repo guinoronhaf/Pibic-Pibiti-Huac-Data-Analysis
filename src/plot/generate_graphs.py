@@ -182,7 +182,7 @@ def generate_graph_6(df: pd.DataFrame):
     ax.set_ylabel('Times Chosen')
     ax.set_xlabel('Rates')
     ax.set_ylim(0, max(times_chosen) + 5)
-    ax.set_title('How do you rate the application of artificial intelligence in radiological diagnosis?', fontweight='bold')
+    ax.set_title('Como você avalia a aplicação de inteligência artificial no diagnóstico radiológico?', fontweight='bold')
     ax.legend(title="Color Mean")
 
     
