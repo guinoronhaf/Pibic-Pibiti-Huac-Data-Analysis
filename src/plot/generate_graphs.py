@@ -149,7 +149,7 @@ def generate_graph_5(df: pd.DataFrame):
 
     ax.invert_yaxis()
 
-    ax.set_xlabel('Counts')
+    ax.set_xlabel('Frequência da Funcionalidade')
 
     ax.grid(visible=True, color='grey', linestyle='-.', linewidth=0.5, alpha=0.2)
 
@@ -172,18 +172,18 @@ def generate_graph_6(df: pd.DataFrame):
     rates = list(dict_times_by_rate)
     times_chosen = [dict_times_by_rate[i] for i in rates]
 
-    bar_label = 'Times Chosen'
+    bar_label = 'Quantidade'
     bar_color = 'tab:blue'
 
     ax.bar(rates, times_chosen, label=bar_label, color=bar_color)
 
     ax.set_xticks(range(len(rates))) # isso permite que todos os valores (eixo-x) de rate apareçam, sem perder os dados
     ax.set_xticklabels(rates)
-    ax.set_ylabel('Times Chosen')
-    ax.set_xlabel('Rates')
+    ax.set_ylabel('Frequência')
+    ax.set_xlabel('Avaliação')
     ax.set_ylim(0, max(times_chosen) + 5)
     ax.set_title('Como você avalia a aplicação de inteligência artificial no diagnóstico radiológico?', fontweight='bold')
-    ax.legend(title="Color Mean")
+    ax.legend(title="Significado")
 
     
     total_votes = sum(times_chosen)
