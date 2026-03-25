@@ -5,6 +5,7 @@
 - [Recursos utilizados](#recursos-utilizados)
 - [Organização de diretórios](#organização-de-diretórios)
 - [Executando código](#executando-código)
+- [Contribuidores](#contribuidores)
 
 Este repositório é composto por _scripts_ Python focados em produzir dados estatísticos e gráficos relacionados ao projeto de pesquisa de título:
 
