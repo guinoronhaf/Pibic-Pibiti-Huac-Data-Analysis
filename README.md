@@ -79,6 +79,68 @@ E atualiza-se as mesmas a partir de:
 pip install -r ./requirements.txt
 ```
 
+## Exemplos de código
+
+Como exposto, diversas bibliotecas foram utilizadas para modelagem estrutural dos _scripts_. Nesse sentido, serão apresentados alguns exemplos de uso das bibliotecas em questão, como forma de apresentar a metologia e os procedimentos utilizados.
+
+### Integração entre _pandas_ e _matplotlib_
+
+Como apresentado, é possível integrar as bibliotecas de análise de dados e plotagem de gráficos. 
+
+O exemplo a seguir, disponível em `./src/plot/generate_graphs.py`, retrata a integração entre objetos _DataFrame_, fundamentais na biblioteca _pandas_ e as configurações de geraçãod e gráficos com _matplotlib_.
+
+```python
+def generate_graph_5(df: pd.DataFrame):
+    target_field = 'funcionalidades' # definição do campo alvo do DataFrame
+    title = "Quais funcionaliades serviriam para aumentar sua confiança em um sistema de IA para diagnóstico por imagem?" # definição do título do gráfico
+
+    ans_poss = ("A performance/acurácia do sistema", "Uma explicação visual", "Uma indicação da confiança", "Uma explicação textual", "Uma recomendação para mais imagens/modalidades") # possibilidades de resposta
+    ans_poss_labels = ("A performance/acurácia\ndo sistema", "Uma explicação visual", "Uma indicação da\n confiança", "Uma explicação textual", "Uma recomendação para \nmais imagens/modalidades") # labels (etiquetas) associadas às possibiliades de reposta, formatadas com quebras de linha (\n)
+
+    ans_values = [int(df[target_field].str.contains(ap).sum()) for ap in ans_poss] # contabilizando repostas obtidas
+
+    # --- configurações gerais do gráfico ---
+    fig, ax = plt.subplots(figsize=(18, 8))
+
+    ax.barh(ans_poss_labels, ans_values, height=0.5)
+
+    ax.set_xticks(range(0, max(ans_values) + 5, 10))
+    ax.set_yticks(range(len(ans_poss_labels)))
+
+    ax.xaxis.set_tick_params(pad=5)
+    ax.yaxis.set_tick_params(pad=10)
+
+    ax.xaxis.set_ticks_position('none')
+    ax.yaxis.set_ticks_position('none')
+
+    ax.set_yticklabels(ans_poss_labels, ma='center')
+
+    for s in ('left', 'right'):
+        ax.spines[s].set_visible(False)
+
+    ax.invert_yaxis()
+
+    ax.set_xlabel('Frequência da Funcionalidade')
+
+    ax.grid(visible=True, color='grey', linestyle='-.', linewidth=0.5, alpha=0.2)
+
+    for i in ax.patches:
+        plt.text(i.get_width()+0.1, i.get_y()+0.3, str(round((i.get_width()), 2)), fontsize=10, color='black', ma='center')
+
+    ax.set_title(title, pad=10)
+
+    # ---
+
+    plt.savefig(PATH + "graph5.png") # salvando imagem
+
+    plt.clf() # encerrando instância de plt para não afetar a geração de outros gráficos
+```
+
+O código acima é responsável pela geração do seguinte gráfico:
+
+![Quais funcionalidades serviriam para aumentar sua confiança em um sistema de IA para diagnóstico por imagem?](./data/graphs/graph5.png)
+
+
 ## Executando código
 
 Para gerar gráficos e análises estatíscas personalizadas, siga o passo a passo:
