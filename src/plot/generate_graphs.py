@@ -98,7 +98,7 @@ def generate_graph_3(df: pd.DataFrame):
     plt.clf()
 
 def generate_graph_4(df: pd.DataFrame):
-    title = "Em uma escala de 0 a 10, o quão confiável você considera so sistemas de IA para uso no auxílio de interpretação de imagens? (0 = sem confiança, 10 = confiança absoluta)"
+    title = "Em uma escala de 0 a 10, o quão confiável você considera os sistemas de IA para uso no auxílio de interpretação de imagens? (0 = sem confiança, 10 = confiança absoluta)"
 
     total_answers = (df['ia_confiavel']).count()
 
