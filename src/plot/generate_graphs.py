@@ -15,7 +15,7 @@ def generate_graph_1(df):
                         figsize=(8, 8),
                         ylabel='')
     
-    plt.title("Proporção de Cargos", fontsize=10)
+    plt.title("Proporção de Cargos", fontsize=10, fontweight='bold')
 
     # Adiciona uma legenda lateral para ficar mais organizado
     plt.legend(df_speciality.index, title="Cargos", loc="upper left", bbox_to_anchor=(1.20, 1.20))
@@ -88,9 +88,9 @@ def generate_graph_3(df: pd.DataFrame):
         multiplier += 1
 
     ax.set_ylabel('%')
-    ax.set_title(title)
+    ax.set_title(title, fontsize=14, fontweight='bold')
     ax.set_xticks(x + adjustment, answer_categories)
-    ax.legend(loc='upper right', ncols=1)
+    ax.legend(loc='upper right', ncols=1, fontsize=10.7)
     ax.set_ylim(0, 80)
 
     plt.savefig(PATH + "graph3.png")
@@ -113,7 +113,8 @@ def generate_graph_4(df: pd.DataFrame):
 
     ax.set_xticks(range(len(categories)))
     ax.set_ylabel('%')
-    ax.set_title(title, pad=20)
+    title_obj = ax.set_title(title, pad=20, fontsize=17, wrap=True, fontweight='bold')
+    title_obj._get_wrap_line_width = lambda: 1500
     ax.set_ylim(0, max(values_to_plot) + 5)
 
     plt.savefig(PATH + "graph4.png")
@@ -142,21 +143,21 @@ def generate_graph_5(df: pd.DataFrame):
     ax.xaxis.set_ticks_position('none')
     ax.yaxis.set_ticks_position('none')
 
-    ax.set_yticklabels(ans_poss_labels, ma='center')
+    ax.set_yticklabels(ans_poss_labels, ma='center', fontsize=12)
 
     for s in ('left', 'right'):
         ax.spines[s].set_visible(False)
 
     ax.invert_yaxis()
 
-    ax.set_xlabel('Frequência da Funcionalidade')
+    ax.set_xlabel('Frequência da Funcionalidade', fontsize=15)
 
     ax.grid(visible=True, color='grey', linestyle='-.', linewidth=0.5, alpha=0.2)
 
     for i in ax.patches:
         plt.text(i.get_width()+0.1, i.get_y()+0.3, str(round((i.get_width()), 2)), fontsize=10, color='black', ma='center')
 
-    ax.set_title(title, pad=10)
+    ax.set_title(title, pad=10, fontsize=15, fontweight='bold')
 
     plt.savefig(PATH + "graph5.png")
 
@@ -179,7 +180,7 @@ def generate_graph_6(df: pd.DataFrame):
 
     ax.set_xticks(range(len(rates))) # isso permite que todos os valores (eixo-x) de rate apareçam, sem perder os dados
     ax.set_xticklabels(rates)
-    ax.set_ylabel('Frequência')
+    ax.set_ylabel('Frequência', fontsize=12)
     ax.set_xlabel('Avaliação')
     ax.set_ylim(0, max(times_chosen) + 5)
     ax.set_title('Como você avalia a aplicação de inteligência artificial no diagnóstico radiológico?', fontweight='bold')
